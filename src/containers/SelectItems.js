@@ -310,7 +310,7 @@ class SelectItems extends Component {
             {filteredProductList.map((productId) =>
               <ListItem
                 key={productId}
-                avatar={productList[productId].picture}
+                avatar={"/assets/images/items/" + (productList[productId].name || "undefined").replace(/\s/g, '') + ".jpg"}
                 caption={productList[productId].name + ' ' + '(' + productList[productId].id + ')' }
                 legend={productList[productId].description}
                 onClick={() => this.addProduct(productId)}
