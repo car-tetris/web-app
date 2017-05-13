@@ -7,8 +7,7 @@ import { loadState, saveState } from './state/localStorage'
 import throttle from 'lodash/throttle'
 
 
-//const persistWhitelist = ['apiUser'];
-const persistWhitelist = [];
+const persistWhitelist = ['selectCar'];
 
 
 /**
@@ -20,7 +19,7 @@ export const configureStore = () => {
   const sagaMiddleware = createSagaMiddleware();
   const store = createStore(
     rootReducers,
-    //loadState(),
+    loadState(),
     applyMiddleware(
       ...middlewares,
       sagaMiddleware

@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux';
+import { selectCarActions } from '../state/fe';
+
 import { Container, Button } from '../components/ui';
 import { Autocomplete } from 'react-toolbox';
 
@@ -15,52 +17,51 @@ class SelectCar extends Component {
   };
 
   state = {
-    focus: false
+    focus: false,
+    carId: undefined
   };
 
   constructor() {
     super();
 
-    this.selectedCar = [''];
+    this.cars = {
+      1: {
+        name: 'VW Polo',
+        picture: 'polo'
+      }
+    };
+
+    // Cars object for AutoComplete
+    this.carsSelectMapping = {};
+    Object.keys(this.cars).forEach(id => {
+      this.carsSelectMapping[id] = this.cars[id].name;
+    });
+  }
+
+  /**
+   * Save data to store.
+   */
+  saveData() {
+    const { carId } = this.state;
+    this.props.addCar({ ...this.cars[carId], id: carId });
+    this.context.router.push('/selectItems');
   }
 
 
   componentWillMount() {
+    const { selectCar } = this.props;
+    // Select which selected before.
+    if(selectCar)
+      this.setState({ carId: selectCar.id });
   }
 
   componentWillReceiveProps(nextProps) {
   }
 
   render() {
-    const {focus} = this.state;
-
-    let car = 'undefined';
-    let carname = '';
-
-    if(this.selectedCar[0] == "1") {
-      car = 'polo';
-      carname = 'VW Polo';
-    }
-    if(this.selectedCar[0] == "2") {
-      car = 'golf';
-      carname = 'VW Golf';
-    }
-    if(this.selectedCar[0] == "3") {
-      car = 'passat';
-      carname = 'VW Passat';
-    }
-    if(this.selectedCar[0] == "4"){
-      car = 'touran';
-      carname = 'VW Touran';
-    }
-
-
-    const cars = {
-      1: 'VW Polo',
-      2: 'VW Golf',
-      3: 'VW Passat',
-      4: 'VW Touran'
-    };
+    const { selectCar } = this.props;
+    const { focus, carId } = this.state;
+    const { cars, carsSelectMapping } = this;
 
     return(
       <Container style={focus? {top: '-340px'} : {top: '0'}} className={styles.background}>
@@ -72,9 +73,14 @@ class SelectCar extends Component {
         <br/>
         <br/>
         <br/>
-        <img className={styles.carImage} src={"/assets/images/cars/" + car + ".png"} alt="logo"/><br/>
+        <img
+          className={styles.carImage}
+          src={"/assets/images/cars/" + (carId ? cars[carId].picture : "undefined") + ".png"}
+          alt="logo"
+        />
         <br/>
-        <span>{carname}</span>
+        <br/>
+        <span>{carId ? cars[carId].name : ""}</span>
         <br/>
         <br/>
         <div className={styles.appBar} style={{height: '340px'}}/>
@@ -84,28 +90,27 @@ class SelectCar extends Component {
           selectedPosition="above"
           label="Auto auswählen"
           hint="VW..."
-          onChange={(value) => {
-            this.selectedCar = [];
-            this.selectedCar = value;
-            this.forceUpdate();
-          }}
+          onChange={(carId) => this.setState({ carId : Number(carId) }) }
           onFocus={() => this.setState({focus: true})}
           onBlur={() => this.setState({focus: false})}
-          source={cars}
+          source={carsSelectMapping}
+          value={carId}
           className={styles.autoComplete}
         />
         <br/>
         <br/>
-        <Button primary raised onClick={() => this.context.router.push('/selectItems')}>Weiter</Button>
+        <Button primary raised onClick={() => this.saveData()}>Weiter</Button>
       </Container>
     )
   }
 }
 
 const mapStateToProps = (state) => ({
+  selectCar: state.fe.selectCar
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  addCar: (car) => dispatch(selectCarActions.addCar(car))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SelectCar);

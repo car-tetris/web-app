@@ -34,8 +34,7 @@ export const loadState = () => {
 
   });
 
-  // TODO: For complete state
-  return {api: state};
+  return {fe: state};
 }
 
 /**
@@ -47,9 +46,9 @@ export const loadState = () => {
 export const saveState = (state, whitelist=[]) => {
 
   let newState = {};
-  Object.keys(state.api).forEach((key) => {
+  Object.keys(state.fe).forEach((key) => {
     if(whitelist.indexOf(key) !== -1) {
-      newState[key] = state.api[key];
+      newState[key] = state.fe[key];
       if(newState[key].error) newState[key].error = null;
       if(newState[key].isFetching) newState[key].isFetching = false;
     }

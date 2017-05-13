@@ -66,6 +66,10 @@ class SelectItems extends Component {
   }
 
   componentWillMount() {
+    const { selectCar } = this.props;
+    // Go back to select a car.
+    if(!selectCar)
+      this.context.router.push('/');
   }
 
   componentWillReceiveProps(nextProps) {
@@ -201,6 +205,7 @@ class SelectItems extends Component {
 }
 
 const mapStateToProps = (state) => ({
+  selectCar: state.fe.selectCar
 });
 
 const mapDispatchToProps = (dispatch) => ({
