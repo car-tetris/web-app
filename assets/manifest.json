@@ -3,17 +3,17 @@
   "name": "Packtris",
   "icons": [
     {
-      "src": "assets/images/launcher-1x.png",
+      "src": "images/launcher-1x.png",
       "type": "image/png",
       "sizes": "48x48"
     },
     {
-      "src": "assets/images/launcher-2x.png",
+      "src": "images/launcher-2x.png",
       "type": "image/png",
       "sizes": "96x96"
     },
     {
-      "src": "assets/images/launcher-4x.png",
+      "src": "images/launcher-4x.png",
       "type": "image/png",
       "sizes": "192x192"
     }
