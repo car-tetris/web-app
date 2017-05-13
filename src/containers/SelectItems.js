@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { ItemSearch, LoadedCar } from '../components/selectItems';
 import { Container, Button } from '../components/ui';
 import { FontIcon, List, ListItem, ListSubHeader, ListDivider, IconButton } from 'react-toolbox';
+import bp3d from 'simple-bp3d-node';
 
 import styles from './select.css'
 
@@ -173,7 +174,7 @@ class SelectItems extends Component {
   incInCarList(index) {
     this.inCarList[index].count++;
     this.totalCount++;
-    this.forceUpdate();
+    this.updateView();
   }
 
   /**
@@ -190,7 +191,8 @@ class SelectItems extends Component {
       this.inCarList[index].count--;
     }
     this.totalCount--;
-    this.forceUpdate();
+    this.updateView();
+
   }
 
   /**
@@ -232,7 +234,49 @@ class SelectItems extends Component {
         count: 1
       });
     }
+
     this.totalCount++;
+    this.updateView();
+  }
+
+  calculateLoad() {
+    const nestedProducts = this.inCarList.map(item => {
+      const product = this.productList[item.productId];
+      let count = item.count;
+      const result = [];
+      while(count--) {
+        result.push(product);
+      }
+      return result;
+    });
+
+    const products =  [].concat.apply([], nestedProducts);
+
+    const nestedPackages = products.map(product => {
+      return product.packages;
+    });
+
+    const packages = [].concat.apply([], nestedPackages);
+
+    const car = { items: [], ...this.props.selectCar.dim};
+
+    if(packages.length <= 0) {
+      return;
+    }
+
+    const {
+      bin,
+      unpacked,
+      load
+    } = bp3d(car, packages);
+
+    if(unpacked.length > 0) {
+      console.error("Something didnt fit in");
+    }
+    return load;
+  }
+
+  updateView() {
     this.forceUpdate();
   }
 
@@ -240,9 +284,8 @@ class SelectItems extends Component {
     const { searchFilter } = this.state;
     const { inCarList, productList } = this;
 
+    const load = this.calculateLoad();
     const filteredProductList = this.filterProducts();
-
-    console.log(filteredProductList);
 
     return(
     <Container>
@@ -250,7 +293,7 @@ class SelectItems extends Component {
       <IconButton icon="chevron_left" accent style={{color: 'white'}} onClick={() => this.context.router.push('/')}/>
 
       <br/>
-      <LoadedCar value={this.totalCount * 10}/>
+      <LoadedCar value={ load }/>
       <br/>
 
       <div className={styles.appBar} style={{height: '190px'}}/>

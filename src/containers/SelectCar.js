@@ -27,7 +27,8 @@ class SelectCar extends Component {
     this.cars = {
       1: {
         name: 'VW Polo',
-        picture: 'polo'
+        picture: 'polo',
+        dim: { h: 70, w: 90, d: 70 }
       }
     };
 
