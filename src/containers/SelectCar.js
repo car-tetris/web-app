@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux';
+import { Button } from 'react-toolbox';
 
 //import styles from './selectCar.css'
 
@@ -24,6 +25,7 @@ class SelectCar extends Component {
       <div>
         {/* TODO: Do your work, bitch! */}
         Select a car...
+        <Button primary raised href="/selectItems">Weiter</Button>
       </div>
     )
   }

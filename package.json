@@ -1,5 +1,5 @@
 {
-  "name": "nfs-neptun-frontend",
+  "name": "packtris",
   "version": "0.0.1",
   "private": true,
   "description": "Neptun Software - Frontend",
@@ -28,6 +28,7 @@
     "react-intl": "^2.1.5",
     "react-redux": "^4.4.6",
     "react-router": "^2.6.1",
+    "react-toolbox": "^2.0.0-beta.8",
     "redux": "^3.6.0",
     "redux-saga": "^0.13.0",
     "uuid": "^2.0.3",

@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux';
+import { AppBar, Layout, Panel } from 'react-toolbox';
 
 import styles from './app.css'
 
@@ -19,11 +20,14 @@ class App extends Component {
   }
 
   render() {
+    const { children } = this.props;
 
     return(
-      <div>
-        {this.props.children}
-      </div>
+      <Layout>
+        <Panel>
+          {children}
+        </Panel>
+      </Layout>
     )
   }
 }

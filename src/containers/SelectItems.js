@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux';
+import { AppBar } from 'react-toolbox';
 
 //import styles from './selectItems.css'
 
@@ -22,7 +23,7 @@ class SelectItems extends Component {
 
     return(
       <div>
-        {/* TODO: Do your work, bitch! */}
+        <AppBar leftIcon='menu' onLeftIconClick={() => console.log('click') }/>
         Select a items...
       </div>
     )
