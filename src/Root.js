@@ -18,7 +18,9 @@ class Root extends Component {
   constructor(props) {
     super(props);
 
-    registerServiceWorker();
+    if(!__DEV__) {
+      registerServiceWorker();
+    }
 
     // do not re-render routes
     this.routes = getRoutes(this.props.store)
