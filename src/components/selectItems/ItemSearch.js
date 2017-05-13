@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
-import { Input, Button } from '../ui';
+import { Input } from '../ui';
+import { IconButton } from 'react-toolbox';
 
 import styles from './itemSearch.css';
 
@@ -15,11 +16,11 @@ class ItemSearch extends Component {
   render() {
 
     return(
-    <div>
+    <div style={{position: 'relative'}}>
 
       <Input type="text" floating={false} label="Produktname" />
-      <Button icon="camera" />
-      <Button icon="camera" />
+      <IconButton icon="search" style={{position: 'absolute', right: '0', top: '20px', color: 'grey'}} />
+      <IconButton icon="camera" style={{position: 'absolute', right: '30px', top: '20px', color: 'grey'}} />
 
     </div>
     )

@@ -63,7 +63,7 @@ class SelectCar extends Component {
     };
 
     return(
-      <Container style={focus? {top: '-340'} : {top: '0'}} className={styles.background}>
+      <Container style={focus? {top: '-340px'} : {top: '0'}} className={styles.background}>
         <br/>
         <img className={styles.logo} src="/assets/images/logo.png" alt="logo" />
         <br/>

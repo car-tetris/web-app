@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux';
 import { ItemSearch } from '../components/selectItems';
-import { AppBar, Input } from '../components/ui';
+import { Container } from '../components/ui';
 import { FontIcon, List, ListItem, ListSubHeader, ListDivider, IconButton } from 'react-toolbox';
 
 import styles from './select.css'
@@ -72,9 +72,22 @@ class SelectItems extends Component {
     return(
     <Container>
 
-      <IconButton icon="chevron_left" accent/>
+      <IconButton icon="chevron_left" accent style={{color: 'white'}} onClick={() => this.context.router.push('/')}/>
 
-      <div className={styles.appBar} style={{height: '140px'}}/>
+      <br/>
+      <div style={{width: '100%', textAlign: 'center', position: 'absolute', top: '40px', left: '0', right: '0'}}>
+        <img className={styles.logo} src="/assets/images/cars/fill.png" alt="fill"  style={{margin: '0 auto'}}/>
+        <br/>
+        <span>60% beladen...</span>
+      </div>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+
+
+      <div className={styles.appBar} style={{height: '155px'}}/>
 
       <ItemSearch />
 
