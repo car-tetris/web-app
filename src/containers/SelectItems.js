@@ -1,13 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux';
-<<<<<<< HEAD
-import { AppBar, Input, Container } from '../components/ui';
-import { FontIcon, List, ListItem, ListSubHeader, ListDivider, Button, IconButton } from 'react-toolbox';
-=======
 import { ItemSearch } from '../components/selectItems';
 import { AppBar, Input } from '../components/ui';
-import { FontIcon, List, ListItem, ListSubHeader, ListDivider } from 'react-toolbox';
->>>>>>> d4de7de441abf35f65393f0859011db7ec58f418
+import { FontIcon, List, ListItem, ListSubHeader, ListDivider, IconButton } from 'react-toolbox';
 
 import styles from './select.css'
 
