@@ -29,6 +29,21 @@ class SelectCar extends Component {
         name: 'VW Polo',
         picture: 'polo',
         dim: { h: 70, w: 90, d: 70 }
+      },
+      2: {
+        name: 'VW Golf',
+        picture: 'golf',
+        dim: { h: 90, w: 106, d: 83 }
+      },
+      3: {
+        name: 'VW Passat',
+        picture: 'passat',
+        dim: { h: 89, w: 130, d: 117 }
+      },
+      4: {
+        name: 'VW Touran',
+        picture: 'touran',
+        dim: { h: 93, w: 127, d: 114 }
       }
     };
 
