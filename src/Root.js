@@ -4,6 +4,7 @@ import { IntlProvider } from 'react-intl';
 import { Router, browserHistory } from 'react-router'
 import configureIntl from './utils/configureIntl';
 import getRoutes from './routes'
+import registerServiceWorker from './utils/service-worker';
 
 
 /**
@@ -16,6 +17,8 @@ class Root extends Component {
 
   constructor(props) {
     super(props);
+
+    registerServiceWorker();
 
     // do not re-render routes
     this.routes = getRoutes(this.props.store)
