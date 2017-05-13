@@ -35,9 +35,29 @@ class SelectItems extends Component {
         description: "TV-Bank"
       },
       3: {
-        picture: "http://www.ikea.com/de/de/images/products/byas-tv-bank-wei-__0144833_PE304277_S4.JPG",
-        name: "BYÅS",
-        description: "TV-Bank"
+        picture: "http://www.ikea.com/de/de/images/products/pax-kleiderschrank-wei-__0300268_PE426268_S4.JPG",
+        name: "Pax",
+        description: "Kleiderschrank mit Schiebetüren"
+      },
+      4: {
+        picture: "http://www.ikea.com/de/de/images/products/lack-beistelltisch-rot__0115088_PE268302_S4.JPG",
+        name: "Lack",
+        description: "Beistelltisch"
+      },
+      5: {
+        picture: "http://www.ikea.com/de/de/images/products/klippan-er-sofa-grau__0239990_PE379591_S4.JPG",
+        name: "Kippan Sofa",
+        description: "2er Sofa"
+      },
+      6: {
+        picture: "http://www.ikea.com/de/de/images/products/kallax-regal-wei-__0243994_PE383246_S4.JPG",
+        name: "Kallax",
+        description: "Regal"
+      },
+      7: {
+        picture: "http://www.ikea.com/de/de/images/products/leifarne-stuhl-blau__0376674_PE553887_S4.JPG",
+        name: "Leifarne Stuhl",
+        description: "Stuhl für Esszimmer"
       }
     };
 
