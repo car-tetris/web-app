@@ -1,4 +1,5 @@
 @import '../../../styles/variables.css';
 
-.primary {
+.primary span::before, .primary span::after {
+  background-color: #000031 !important;
 }

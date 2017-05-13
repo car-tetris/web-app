@@ -96,8 +96,6 @@ class SelectCar extends Component {
         />
         <br/>
         <br/>
-        <br/>
-        <br/>
         <Button primary raised onClick={() => this.context.router.push('/selectItems')}>Weiter</Button>
       </Container>
     )

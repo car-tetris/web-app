@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux';
-import { ItemSearch } from '../components/selectItems';
+import { ItemSearch, LoadedCar } from '../components/selectItems';
 import { Container, Button } from '../components/ui';
 import { FontIcon, List, ListItem, ListSubHeader, ListDivider, IconButton } from 'react-toolbox';
 
@@ -42,6 +42,7 @@ class SelectItems extends Component {
     };
 
     this.inCarList = [];
+    this.totalCount = 0;
   }
 
   componentWillMount() {
@@ -56,6 +57,7 @@ class SelectItems extends Component {
    */
   incInCarList(index) {
     this.inCarList[index].count++;
+    this.totalCount++;
     this.forceUpdate();
   }
 
@@ -72,6 +74,7 @@ class SelectItems extends Component {
     }else{
       this.inCarList[index].count--;
     }
+    this.totalCount--;
     this.forceUpdate();
   }
 
@@ -109,6 +112,7 @@ class SelectItems extends Component {
       productId: productId,
       count: 1
     });
+    this.totalCount++;
     this.forceUpdate();
   }
 
@@ -126,19 +130,10 @@ class SelectItems extends Component {
       <IconButton icon="chevron_left" accent style={{color: 'white'}} onClick={() => this.context.router.push('/')}/>
 
       <br/>
-      <div style={{width: '100%', textAlign: 'center', position: 'absolute', top: '40px', left: '0', right: '0'}}>
-        <img className={styles.logo} src="/assets/images/cars/fill.png" alt="fill"  style={{margin: '0 auto'}}/>
-        <br/>
-        <span>60% beladen...</span>
-      </div>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
+      <LoadedCar value={this.totalCount * 10}/>
       <br/>
 
-
-      <div className={styles.appBar} style={{height: '155px'}}/>
+      <div className={styles.appBar} style={{height: '190px'}}/>
 
       <ItemSearch
         onChange={(value) => this.setState({ searchFilter: value })}
@@ -156,7 +151,7 @@ class SelectItems extends Component {
                 caption={productList[productId].name}
                 legend={productList[productId].description}
                 rightActions={[
-                  <Button floating mini raised icon="add" onClick={() => this.addProduct(productId)} />
+                  <Button floating mini icon="add" style={{backgroundColor: '#33b9ed !important'}} onClick={() => this.addProduct(productId)} />
                 ]}
               />
             )}

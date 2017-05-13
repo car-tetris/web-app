@@ -11,6 +11,8 @@ class LoadedCar extends Component {
     value: PropTypes.number
   };
 
+
+
   constructor() {
     super();
   }
