@@ -32,9 +32,23 @@ class ItemSearch extends Component {
     return(
     <div style={{position: 'relative'}}>
 
-      <Input type="text" onChange={(value) => this.onChangeSearch(value)} value={searchValue} floating={false} label="Produktname" />
-      <IconButton icon="search" style={{position: 'absolute', right: '0', top: '20px', color: 'grey'}} />
-      <IconButton icon="camera" style={{position: 'absolute', right: '30px', top: '20px', color: 'grey'}} />
+      <Input
+        type="text"
+        label="Produktname"
+        onChange={(value) => this.onChangeSearch(value)} value={searchValue}
+        floating={false}
+      />
+
+      <IconButton
+        icon={searchValue.length > 0 ? 'close' : 'search'}
+        onClick={() => this.setState({ searchValue: '' }) }
+        style={{position: 'absolute', right: '35px', top: '20px', color: 'grey'}}
+      />
+
+      <IconButton
+        icon="camera"
+        style={{position: 'absolute', right: '0', top: '20px', color: 'grey'}}
+      />
 
     </div>
     )
