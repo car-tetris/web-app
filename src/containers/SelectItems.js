@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux';
+import { ItemSearch } from '../components/selectItems';
 import { AppBar, Input } from '../components/ui';
 import { FontIcon, List, ListItem, ListSubHeader, ListDivider } from 'react-toolbox';
 
@@ -69,7 +70,7 @@ class SelectItems extends Component {
 
       <AppBar leftIcon="menu" onLeftIconClick={() => console.log('click') }/>
 
-      <Input type="text" floating={false} label="Produktname" />
+      <ItemSearch />
 
       <List selectable ripple>
         <ListSubHeader caption='Im Kofferraum' />
