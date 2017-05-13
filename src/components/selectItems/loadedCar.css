@@ -1,0 +1,18 @@
+.base {
+  box-sizing: border-box;
+  max-height: 100px;
+  position: absolute;
+  bottom: 0;
+  left: calc((100% - 260px) / 2);
+  background-position: bottom;
+  background-size: cover;
+}
+
+.empty {
+  background-image: url(/assets/images/cars/empty.png);
+}
+
+.fill {
+  background-image: url(/assets/images/cars/fill.png);
+}
+
