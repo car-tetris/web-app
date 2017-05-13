@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux';
 import { Container, Button } from '../components/ui';
-import { Dropdown } from 'react-toolbox';
+import { Autocomplete } from 'react-toolbox';
 
 import styles from './selectCar.css'
 
@@ -10,17 +10,16 @@ import styles from './selectCar.css'
  */
 class SelectCar extends Component {
 
-  state = {
-    dropdownValue: 1
-  };
-
   static contextTypes = {
     router: PropTypes.object.isRequired
   };
 
   constructor() {
     super();
+
+    this.selectedCar = [''];
   }
+
 
   componentWillMount() {
   }
@@ -28,15 +27,35 @@ class SelectCar extends Component {
   componentWillReceiveProps(nextProps) {
   }
 
-
   render() {
 
-    const cars = [
-      { value: 1, label: 'VW Polo' },
-      { value: 2, label: 'VW Golf'},
-      { value: 3, label: 'VW Passat' },
-      { value: 4, label: 'VW Touran'}
-    ];
+    let car = 'undefined';
+    let carname = '';
+
+    if(this.selectedCar[0] == "1") {
+      car = 'polo';
+      carname = 'VW Polo';
+    }
+    if(this.selectedCar[0] == "2") {
+      car = 'golf';
+      carname = 'VW Golf';
+    }
+    if(this.selectedCar[0] == "3") {
+      car = 'passat';
+      carname = 'VW Passat';
+    }
+    if(this.selectedCar[0] == "4"){
+      car = 'touran';
+      carname = 'VW Touran';
+    }
+
+
+    const cars = {
+      1: 'VW Polo',
+      2: 'VW Golf',
+      3: 'VW Passat',
+      4: 'VW Touran'
+    };
 
     return(
       <Container width="fixed" className={styles.background}>
@@ -46,24 +65,31 @@ class SelectCar extends Component {
         <br/>
         <br/>
         <br/>
-        <Dropdown
+        <br/>
+        <br/>
+        <img className={styles.carImage} src={"/assets/images/cars/" + car + ".png"} alt="logo"/><br/>
+        <br/>
+        <span>{carname}</span>
+        <br/>
+        <br/>
+        <Autocomplete
+          multiple={false}
+          direction="down"
+          selectedPosition="above"
           label="Auto auswählen"
-          onChange={(value) => this.setState({value: value})}
+          onChange={(value) => {
+            this.selectedCar = [];
+            this.selectedCar = value;
+            this.forceUpdate();
+          }}
           source={cars}
-          value={this.state.value}
         />
         <br/>
         <br/>
         <br/>
         <br/>
         <br/>
-        <Button
-          primary
-          raised
-          onClick={() => this.context.router.push('/selectItems')}
-        >
-          Beladen
-        </Button>
+        <Button primary raised onClick={() => this.context.router.push('/selectItems')}>Weiter</Button>
       </Container>
     )
   }
