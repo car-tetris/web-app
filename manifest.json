@@ -1,0 +1,25 @@
+{
+  "short_name": "Packtris",
+  "name": "Packtris",
+  "icons": [
+    {
+      "src": "assets/images/launcher-1x.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "assets/images/launcher-2x.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "assets/images/launcher-4x.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#33b9ed",
+  "theme_color": "#33b9ed",
+  "display": "standalone"
+}
