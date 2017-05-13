@@ -2,7 +2,7 @@
   "name": "packtris",
   "version": "0.0.1",
   "private": true,
-  "description": "Neptun Software - Frontend",
+  "description": "packtris",
   "main": "server.js",
   "scripts": {
     "serve": "node .",
@@ -28,7 +28,7 @@
     "react-toolbox": "^2.0.0-beta.8",
     "redux": "^3.6.0",
     "redux-saga": "^0.13.0",
-    "simple-bp3d-node": "^0.1.0",
+    "simple-bp3d-node": "^0.2.0",
     "uuid": "^2.0.3",
     "whatwg-fetch": "^1.0.0"
   },
