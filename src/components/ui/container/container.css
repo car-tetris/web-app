@@ -1,0 +1,30 @@
+@import '../../../styles/variables.css';
+
+.basic {
+  width: 100%;
+  padding: 20px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.width-full {
+  width: 100% !important;
+}
+
+@media (--lg-media) {
+  .width-lg {
+    width: 1200px;
+  }
+}
+
+@media (--md-media) {
+  .width-md {
+    width: 992px;
+  }
+}
+
+@media (--sm-media) {
+  .width-sm {
+    width: 768px;
+  }
+}

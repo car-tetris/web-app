@@ -1,13 +1,22 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux';
-import { Container, Button } from '../components/ui';
+import { Button } from 'react-toolbox';
 
-import styles from './selectCar.css'
+import styles from './button.css';
 
 /**
  * Select a car container.
  */
 class SelectCar extends Component {
+
+  static propTypes = {
+    primary: PropTypes.bool,
+    accent: PropTypes.bool
+  };
+
+  static defaultProps = {
+    primary: true
+  };
 
   constructor() {
     super();
@@ -20,13 +29,18 @@ class SelectCar extends Component {
   }
 
   render() {
+    const {children, primary, accent, ...props} = this.props;
 
     return(
-      <Container className={styles.background}>
-        Select a car...<br/>
-        <br/>
-        <Button primary raised href="/selectItems">Weiter</Button>
-      </Container>
+      <Button
+        className={`
+          ${primary ? styles.primary : ''}
+          ${accent ? styles.accent : ''}
+        `}
+        {...props}
+      >
+        {children}
+      </Button>
     )
   }
 }
