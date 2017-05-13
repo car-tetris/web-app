@@ -1,0 +1,24 @@
+/*
+ * VARIABLES
+ * With postcss-cssnext we're able to use next css features.
+ *
+ * NOTE: Hot-reloading isn't working for this file. You need to restart the dev server.
+ */
+
+:root {
+
+  /* OWN VAR START */
+
+  --fontColorDefault: #444444;
+
+  /* OWN VAR END */
+
+
+  --fontSize: 14px;
+  --fontSizeSm: 12px;
+}
+
+/* media queries*/
+@custom-media --lg-media (min-width: 1440px); /* Added 240px because of padding, the breakdown has to be earlier if the Menu is always shown. Old value: 1200px*/
+@custom-media --md-media (min-width: 1232px); /* Old value: 992px */
+@custom-media --sm-media (min-width: 1025px); /* Old value: 768px */

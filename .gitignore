@@ -1,0 +1,14 @@
+# IntelliJ
+*.ipr
+*.iml
+*.iws
+.idea/
+.history/
+
+*DS_Store
+
+.vscode/
+
+node_modules/
+dist/
+npm-debug.log

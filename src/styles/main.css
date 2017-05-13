@@ -1,0 +1,23 @@
+/*
+ * GLOBAL STYLES
+ *
+ * NOTE: Hot-reloading isn't working for this file. You need to restart the dev server.
+ */
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,400italic,500italic,700italic,300italic);
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif !important;
+  color: var(--fontColorDefault);
+  background: white;
+}
