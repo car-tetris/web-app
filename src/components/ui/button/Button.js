@@ -1,13 +1,12 @@
 import React, { Component, PropTypes } from 'react'
-import { connect } from 'react-redux';
-import { Button } from 'react-toolbox';
+import { Button as ButtonToolbox } from 'react-toolbox';
 
 import styles from './button.css';
 
 /**
  * Select a car container.
  */
-class SelectCar extends Component {
+class Button extends Component {
 
   static propTypes = {
     primary: PropTypes.bool,
@@ -32,7 +31,7 @@ class SelectCar extends Component {
     const {children, primary, accent, ...props} = this.props;
 
     return(
-      <Button
+      <ButtonToolbox
         className={`
           ${primary ? styles.primary : ''}
           ${accent ? styles.accent : ''}
@@ -40,15 +39,9 @@ class SelectCar extends Component {
         {...props}
       >
         {children}
-      </Button>
+      </ButtonToolbox>
     )
   }
 }
 
-const mapStateToProps = (state) => ({
-});
-
-const mapDispatchToProps = (dispatch) => ({
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(SelectCar);
+export default Button;
