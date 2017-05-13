@@ -14,6 +14,10 @@ class SelectCar extends Component {
     router: PropTypes.object.isRequired
   };
 
+  state = {
+    focus: false
+  };
+
   constructor() {
     super();
 
@@ -28,6 +32,7 @@ class SelectCar extends Component {
   }
 
   render() {
+    const {focus} = this.state;
 
     let car = 'undefined';
     let carname = '';
@@ -58,7 +63,7 @@ class SelectCar extends Component {
     };
 
     return(
-      <Container width="fixed" className={styles.background}>
+      <Container width="fixed" style={focus? {top: '-300px'} : {top: '0'}} className={styles.background}>
         <br/>
         <img className={styles.logo} src="/assets/images/logo.png" alt="logo" />
         <br/>
@@ -77,11 +82,14 @@ class SelectCar extends Component {
           direction="down"
           selectedPosition="above"
           label="Auto auswählen"
+          hint="VW..."
           onChange={(value) => {
             this.selectedCar = [];
             this.selectedCar = value;
             this.forceUpdate();
           }}
+          onFocus={() => this.setState({focus: true})}
+          onBlur={() => this.setState({focus: false})}
           source={cars}
         />
         <br/>
