@@ -27,7 +27,3 @@ npm install
 
 echo "************ build ************";
 npm run build:$env
-
-echo "************ copy files ************";
-rm -R ../public/*
-cp -R dist/* ../public/
