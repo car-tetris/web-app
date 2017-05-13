@@ -12,7 +12,7 @@ class Container extends Component {
   };
 
   static PropTypes = {
-    width: PropTypes.oneOf(['full', 'fixed', 'lg', 'md', 'sm']),
+    width: PropTypes.oneOf(['full', 'lg', 'md', 'sm']),
     className: PropTypes.string,
     style: PropTypes.object
   };

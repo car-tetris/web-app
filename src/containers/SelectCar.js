@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Container, Button } from '../components/ui';
 import { Autocomplete } from 'react-toolbox';
 
-import styles from './selectCar.css'
+import styles from './select.css'
 
 /**
  * Select a car container.
@@ -63,7 +63,7 @@ class SelectCar extends Component {
     };
 
     return(
-      <Container width="fixed" style={focus? {top: '-300px'} : {top: '0'}} className={styles.background}>
+      <Container style={focus? {top: '-340'} : {top: '0'}} className={styles.background}>
         <br/>
         <img className={styles.logo} src="/assets/images/logo.png" alt="logo" />
         <br/>
@@ -77,6 +77,7 @@ class SelectCar extends Component {
         <span>{carname}</span>
         <br/>
         <br/>
+        <div className={styles.appBar} style={{height: '340px'}}/>
         <Autocomplete
           multiple={false}
           direction="down"
@@ -91,8 +92,8 @@ class SelectCar extends Component {
           onFocus={() => this.setState({focus: true})}
           onBlur={() => this.setState({focus: false})}
           source={cars}
+          className={styles.autoComplete}
         />
-        <br/>
         <br/>
         <br/>
         <br/>

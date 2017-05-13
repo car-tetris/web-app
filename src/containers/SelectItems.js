@@ -1,14 +1,18 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux';
-import { AppBar, Input } from '../components/ui';
-import { FontIcon, List, ListItem, ListSubHeader, ListDivider } from 'react-toolbox';
+import { AppBar, Input, Container } from '../components/ui';
+import { FontIcon, List, ListItem, ListSubHeader, ListDivider, Button, IconButton } from 'react-toolbox';
 
-//import styles from './selectItems.css'
+import styles from './select.css'
 
 /**
 * Select items container.
 */
 class SelectItems extends Component {
+
+  static contextTypes = {
+    router: PropTypes.object.isRequired
+  };
 
   constructor() {
     super();
@@ -23,9 +27,11 @@ class SelectItems extends Component {
   render() {
 
     return(
-    <div>
+    <Container>
 
-      <AppBar leftIcon="menu" onLeftIconClick={() => console.log('click') }/>
+      <IconButton icon="chevron_left" accent/>
+
+      <div className={styles.appBar} style={{height: '140px'}}/>
 
       <Input type="text" floating={false} label="Produktname" />
 
@@ -36,13 +42,13 @@ class SelectItems extends Component {
           caption='JASSA'
           legend="Couchtisch"
           rightActions={[
-            <FontIcon value="add" onClick={() => console.log('ADD')} />,
-            <FontIcon value="remove" onClick={() => console.log('ADD')} />,
+            <FontIcon key={1} value="add" onClick={() => console.log('ADD')} />,
+            <FontIcon key={2} value="remove" onClick={() => console.log('ADD')} />,
           ]}
         />
       </List>
 
-    </div>
+    </Container>
     )
   }
 }

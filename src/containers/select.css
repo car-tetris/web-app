@@ -1,0 +1,45 @@
+@import '../styles/variables.css';
+
+.background {
+  text-align: center;
+  transition: top 0.7s ease;
+}
+
+.appBar {
+  background-color: var(--brandSecondary) !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+
+.logo {
+  width: 200px;
+}
+
+.carImage {
+  height: 100px;
+}
+
+.autoComplete {
+  color: var(--brandPrimary) !important;
+}
+
+.autoComplete label {
+  color: var(--brandPrimary) !important;
+}
+
+.autoComplete input {
+  color: var(--brandPrimary) !important;
+}
+
+.autoComplete span::after {
+  background-color: var(--brandPrimary) !important;
+}
+
+.autoComplete span::before {
+  background-color: var(--brandPrimary) !important;
+}
+
+
