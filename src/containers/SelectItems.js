@@ -268,10 +268,11 @@ class SelectItems extends Component {
               <ListItem
                 key={productId}
                 avatar={productList[productId].picture}
-                caption={productList[productId].name}
+                caption={productList[productId].name + ' ' + '(' + productList[productId].id + ')' }
                 legend={productList[productId].description}
+                onClick={() => this.addProduct(productId)}
                 rightActions={[
-                  <Button floating mini icon="add" style={{backgroundColor: '#33b9ed !important'}} onClick={() => this.addProduct(productId)} />
+                  <FontIcon value="add"/>
                 ]}
               />
             )}
@@ -283,7 +284,7 @@ class SelectItems extends Component {
           <ListItem
             key={index}
             avatar={productList[item.productId].picture}
-            caption={productList[item.productId].name}
+            caption={productList[item.productId].name + ' ' + '(' + productList[item.productId].id + ')' }
             legend={productList[item.productId].description}
             rightActions={[
               <p>{item.count}</p>,

@@ -12,7 +12,12 @@
   background-image: url(/assets/images/cars/empty.png);
 }
 
-.fill {
-  background-image: url(/assets/images/cars/fill.png);
+.full {
+  background-image: url(/assets/images/cars/full.png);
+}
+
+.loaded {
+  background-image: url(/assets/images/cars/loaded.png);
+  opacity: 0.7;
 }
 

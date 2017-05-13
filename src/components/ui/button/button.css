@@ -1,7 +1,7 @@
 @import '../../../styles/variables.css';
 
 .primary {
-  background-color: var(--brandPrimary) !important;
+  background-color: var(--brandTertiary) !important;
   color: white !important;
 }
 

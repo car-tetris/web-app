@@ -41,7 +41,7 @@ class ItemSearch extends Component {
 
       <IconButton
         icon={searchValue.length > 0 ? 'close' : 'search'}
-        onClick={() => this.setState({ searchValue: '' }) }
+        onClick={() => this.onChangeSearch('') }
         style={{position: 'absolute', right: '35px', top: '20px', color: 'grey'}}
       />
 

@@ -64,11 +64,9 @@ class SelectCar extends Component {
     const { cars, carsSelectMapping } = this;
 
     return(
-      <Container style={focus? {top: '-340px'} : {top: '0'}} className={styles.background}>
+      <Container style={focus? {top: (- screen.height/4 )} : {top: '0'}} className={styles.background}>
         <br/>
         <img className={styles.logo} src="/assets/images/logo.png" alt="logo" />
-        <br/>
-        <br/>
         <br/>
         <br/>
         <br/>
@@ -83,8 +81,11 @@ class SelectCar extends Component {
         <span>{carId ? cars[carId].name : ""}</span>
         <br/>
         <br/>
+        <br/>
+        <br/>
         <div className={styles.appBar} style={{height: '340px'}}/>
         <Autocomplete
+          style={{textAlign: 'left'}}
           multiple={false}
           direction="down"
           selectedPosition="above"
