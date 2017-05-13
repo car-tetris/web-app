@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux';
-import { AppBar, FontIcon } from 'react-toolbox';
+import { AppBar } from '../components/ui';
+import { FontIcon, List, ListItem, ListSubHeader, ListDivider } from 'react-toolbox';
 
 //import styles from './selectItems.css'
 

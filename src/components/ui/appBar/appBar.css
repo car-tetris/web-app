@@ -1,0 +1,6 @@
+@import '../../../styles/variables.css';
+
+.primary {
+  background-color: var(--brandPrimary) !important;
+  color: white !important;
+}
