@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux';
 import { ItemSearch } from '../components/selectItems';
-import { Container } from '../components/ui';
+import { Container, Button } from '../components/ui';
 import { FontIcon, List, ListItem, ListSubHeader, ListDivider, IconButton } from 'react-toolbox';
 
 import styles from './select.css'
@@ -15,24 +15,33 @@ class SelectItems extends Component {
     router: PropTypes.object.isRequired
   };
 
+  state = {
+    searchFilter: ''
+  }
+
   constructor() {
     super();
 
-    // List of items which a already in car.
-    this.inCarList = [
-      {
-        avatar: "http://www.ikea.com/de/de/images/products/jassa-couchtisch__0470185_PE612585_S4.JPG",
-        caption: "JASSA",
-        legend: "Couchtisch",
-        count: 2
+    // List of products
+    this.productList = {
+      1: {
+        picture: "http://www.ikea.com/de/de/images/products/jassa-couchtisch__0470185_PE612585_S4.JPG",
+        name: "JASSA",
+        description: "Couchtisch"
       },
-      {
-        avatar: "http://www.ikea.com/de/de/images/products/byas-tv-bank-wei-__0144833_PE304277_S4.JPG",
-        caption: "BYÅS",
-        legend: "TV-Bank",
-        count: 1
+      2: {
+        picture: "http://www.ikea.com/de/de/images/products/byas-tv-bank-wei-__0144833_PE304277_S4.JPG",
+        name: "BYÅS",
+        description: "TV-Bank"
+      },
+      3: {
+        picture: "http://www.ikea.com/de/de/images/products/byas-tv-bank-wei-__0144833_PE304277_S4.JPG",
+        name: "BYÅS",
+        description: "TV-Bank"
       }
-    ];
+    };
+
+    this.inCarList = [];
   }
 
   componentWillMount() {
@@ -66,8 +75,50 @@ class SelectItems extends Component {
     this.forceUpdate();
   }
 
+  /**
+   * Search filter for products.
+   */
+  filterProducts(value) {
+    const { searchFilter } = this.state;
+    const { productList } = this;
+
+    const dividedSearch = searchFilter.split(" ");
+    let textStr = "";
+    let found = true;
+    // Search logic
+    return Object.keys(productList).filter((id) => {
+      textStr = productList[id].name + " " + productList[id].description;
+      found = true;
+      for(var i = 0; i < dividedSearch.length; i++) {
+        if(dividedSearch[i].length > 0)
+          if(!textStr.match(new RegExp(dividedSearch[i], "i"))) {
+            found = false;
+            break;
+          }
+      }
+      return found;
+    });
+  }
+
+  /**
+   * Add product by product id.
+   */
+  addProduct(productId) {
+    console.log(productId);
+    this.inCarList.push({
+      productId: productId,
+      count: 1
+    });
+    this.forceUpdate();
+  }
+
   render() {
-    const { inCarList } = this;
+    const { searchFilter } = this.state;
+    const { inCarList, productList } = this;
+
+    const filteredProductList = this.filterProducts();
+
+    console.log(filteredProductList);
 
     return(
     <Container>
@@ -89,15 +140,36 @@ class SelectItems extends Component {
 
       <div className={styles.appBar} style={{height: '155px'}}/>
 
-      <ItemSearch />
+      <ItemSearch
+        onChange={(value) => this.setState({ searchFilter: value })}
+      />
 
       <List selectable ripple>
+
+        {searchFilter.length > 1 &&
+          <span>
+            <ListSubHeader caption='Ergebnisse' />
+            {filteredProductList.map((productId) =>
+              <ListItem
+                key={productId}
+                avatar={productList[productId].picture}
+                caption={productList[productId].name}
+                legend={productList[productId].description}
+                rightActions={[
+                  <Button floating mini raised icon="add" onClick={() => this.addProduct(productId)} />
+                ]}
+              />
+            )}
+          </span>
+        }
+
         <ListSubHeader caption='Im Kofferraum' />
-        {inCarList.map((item, index) =>
+        {inCarList.length > 0 && inCarList.map((item, index) =>
           <ListItem
-            avatar={item.avatar}
-            caption={item.caption}
-            legend={item.legend}
+            key={index}
+            avatar={productList[item.productId].picture}
+            caption={productList[item.productId].name}
+            legend={productList[item.productId].description}
             rightActions={[
               <p>{item.count}</p>,
               <FontIcon value="remove" onClick={() => this.decInCarList(index)} />,
@@ -105,6 +177,7 @@ class SelectItems extends Component {
             ]}
           />
         )}
+
       </List>
 
     </Container>
