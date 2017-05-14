@@ -190,11 +190,6 @@ if(ENV === 'development') {
             // copy robots.txt
             fs.createReadStream(path.join(__dirname, "robots.txt"))
               .pipe(fs.createWriteStream(path.join(__dirname, buildPath, "robots.txt")));
-
-            // copy service-worker.js
-            fs.createReadStream(path.join(__dirname, "service-worker.js"))
-              .pipe(fs.createWriteStream(path.join(__dirname, buildPath, "service-worker.js")));
-
           }
         });
     }
