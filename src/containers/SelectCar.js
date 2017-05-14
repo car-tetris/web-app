@@ -112,6 +112,8 @@ class SelectCar extends Component {
           onBlur={() => this.setState({focus: false})}
           source={carsSelectMapping}
           value={carId}
+          suggestionMatch="anywhere"
+          showSuggestionsWhenValueIsSet
           className={styles.autoComplete}
         />
         <br/>

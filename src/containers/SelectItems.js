@@ -206,7 +206,7 @@ class SelectItems extends Component {
     let found = true;
     // Search logic
     return Object.keys(productList).filter((id) => {
-      textStr = productList[id].name + " " + productList[id].description;
+      textStr = productList[id].name + " " + productList[id].description + " " + productList[id].id;
       found = true;
       for(var i = 0; i < dividedSearch.length; i++) {
         if(dividedSearch[i].length > 0)
@@ -287,7 +287,7 @@ class SelectItems extends Component {
     const { inCarList, productList } = this;
 
     const load = this.calculateLoad();
-    const filteredProductList = this.filterProducts();
+    const filteredProductList = this.filterProducts().slice(0,3);
 
     return(
     <Container>
@@ -306,7 +306,7 @@ class SelectItems extends Component {
 
       <List selectable ripple>
 
-        {searchFilter.length > 1 &&
+        {searchFilter.length > 0 &&
           <span>
             <ListSubHeader caption='Ergebnisse' />
             {filteredProductList.map((productId) =>
