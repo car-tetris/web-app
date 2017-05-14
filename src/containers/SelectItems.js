@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { ItemSearch, LoadedCar } from '../components/selectItems';
 import { Container, Button } from '../components/ui';
 import { FontIcon, List, ListItem, ListSubHeader, ListDivider, IconButton } from 'react-toolbox';
-import bp3d from 'simple-bp3d-node';
 
 import styles from './select.css'
 
@@ -240,6 +239,14 @@ class SelectItems extends Component {
   }
 
   calculateLoad() {
+    const volume = (dim) => {
+      return dim.h * dim.w * dim.d;
+    }
+
+    const {
+      selectCar
+    } = this.props;
+
     const nestedProducts = this.inCarList.map(item => {
       const product = this.productList[item.productId];
       let count = item.count;
@@ -252,25 +259,20 @@ class SelectItems extends Component {
 
     const products =  [].concat.apply([], nestedProducts);
 
-    const nestedPackages = products.map(product => {
-      return product.packages;
-    });
+    const nestedPackages = products.map(product => product.packages);
 
     const packages = [].concat.apply([], nestedPackages);
-
-    const car = { items: [], ...this.props.selectCar.dim};
 
     if(packages.length <= 0) {
       return;
     }
 
-    const {
-      bin,
-      unpacked,
-      load
-    } = bp3d(car, packages);
+    const packageVol = packages.map(pkg => volume(pkg)).reduce((prev, curr) => prev + curr, 0);
+    const carVol = volume(selectCar.dim);
 
-    if(unpacked.length > 0) {
+    const load = packageVol / carVol;
+
+    if(load > 1) {
       console.error("Something didnt fit in");
     }
     return load;
