@@ -5,6 +5,10 @@
   color: white !important;
 }
 
+.primary[disabled] {
+  opacity: 0.6;
+}
+
 .accent {
 
 }

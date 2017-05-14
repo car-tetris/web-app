@@ -27,6 +27,7 @@ class ItemSearch extends Component {
   }
 
   render() {
+    const { onChange, ...props } = this.props;
     const { searchValue } = this.state;
 
     return(
@@ -37,6 +38,7 @@ class ItemSearch extends Component {
         label="Produktname"
         onChange={(value) => this.onChangeSearch(value)} value={searchValue}
         floating={false}
+        {...props}
       />
 
       <IconButton

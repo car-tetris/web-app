@@ -86,7 +86,6 @@ class SelectCar extends Component {
         <br/>
         <br/>
         <br/>
-        <br/>
         <img
           className={styles.carImage}
           src={"/assets/images/cars/" + (carId ? cars[carId].picture : "undefined") + ".png"}
@@ -95,7 +94,6 @@ class SelectCar extends Component {
         <br/>
         <br/>
         <span>{carId ? cars[carId].name : ""}</span>
-        <br/>
         <br/>
         <br/>
         <br/>
@@ -118,7 +116,11 @@ class SelectCar extends Component {
         />
         <br/>
         <br/>
-        <Button primary raised onClick={() => this.saveData()}>Weiter</Button>
+        <Button disabled={!carId} primary raised onClick={() => this.saveData()}>Auto beladen</Button>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
       </Container>
     )
   }
