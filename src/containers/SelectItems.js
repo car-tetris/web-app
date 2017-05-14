@@ -326,7 +326,7 @@ class SelectItems extends Component {
         {inCarList.length > 0 && inCarList.map((item, index) =>
           <ListItem
             key={index}
-            avatar={"/assets/images/items/" + (productList[productId].name || "undefined").replace(/\s/g, '') + ".jpg"}
+            avatar={"/assets/images/items/" + (productList[item.productId].name || "undefined").replace(/\s/g, '') + ".jpg"}
             caption={productList[item.productId].name + ' ' + '(' + productList[item.productId].id + ')' }
             legend={productList[item.productId].description}
             rightActions={[
