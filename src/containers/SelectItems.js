@@ -164,7 +164,8 @@ class SelectItems extends Component {
       this.context.router.push('/');
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentDidMount() {
+    goToTop();
   }
 
   /**

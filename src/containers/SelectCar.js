@@ -72,7 +72,8 @@ class SelectCar extends Component {
       this.setState({ carId: selectCar.id });
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentDidMount() {
+    goToTop();
   }
 
   render() {
