@@ -18,7 +18,7 @@ class Container extends Component {
   };
 
   render() {
-    const { className, width, style, children } = this.props;
+    const { className, width, style, children, ...props } = this.props;
 
     return(
       <div
@@ -28,6 +28,7 @@ class Container extends Component {
           ${className ? className : ''}
         `}
         style={style}
+        {...props}
       >
         {children}
       </div>

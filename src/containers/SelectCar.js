@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux';
+import ScrollableAnchor, { goToTop, goToAnchor } from 'react-scrollable-anchor';
 import { selectCarActions } from '../state/fe';
 
 import { Container, Button } from '../components/ui';
@@ -80,17 +81,19 @@ class SelectCar extends Component {
     const { cars, carsSelectMapping } = this;
 
     return(
-      <Container style={focus? {top: (- screen.height/4 )} : {top: '0'}} className={styles.background}>
+      <Container className={styles.background}>
         <br/>
         <img className={styles.logo} src="/assets/images/logo.svg" alt="logo" />
         <br/>
         <br/>
         <br/>
-        <img
-          className={styles.carImage}
-          src={"/assets/images/cars/" + (carId ? cars[carId].picture : "undefined") + ".png"}
-          alt="logo"
-        />
+        <ScrollableAnchor id={'car'}>
+          <img
+            className={styles.carImage}
+            src={"/assets/images/cars/" + (carId ? cars[carId].picture : "undefined") + ".png"}
+            alt="logo"
+          />
+        </ScrollableAnchor>
         <br/>
         <br/>
         <span>{carId ? cars[carId].name : ""}</span>
@@ -98,22 +101,28 @@ class SelectCar extends Component {
         <br/>
         <br/>
         <div className={styles.appBar} style={{height: '340px'}}/>
-        <Autocomplete
-          style={{textAlign: 'left'}}
-          multiple={false}
-          direction="down"
-          selectedPosition="above"
-          label="Auto auswählen"
-          hint="VW..."
-          onChange={(carId) => this.setState({ carId : Number(carId) }) }
-          onFocus={() => this.setState({focus: true})}
-          onBlur={() => this.setState({focus: false})}
-          source={carsSelectMapping}
-          value={carId}
-          suggestionMatch="anywhere"
-          showSuggestionsWhenValueIsSet
-          className={styles.autoComplete}
-        />
+
+        <ScrollableAnchor id={'search'}>
+          <Autocomplete
+            style={{textAlign: 'left'}}
+            multiple={false}
+            direction="down"
+            selectedPosition="above"
+            label="Auto auswählen"
+            hint="VW..."
+            onChange={(carId) => {
+              this.setState({ carId : Number(carId) });
+              goToAnchor('car', false);
+            }}
+            onFocus={() => goToAnchor('search', false) }
+            source={carsSelectMapping}
+            value={carId}
+            suggestionMatch="anywhere"
+            showSuggestionsWhenValueIsSet
+            className={styles.autoComplete}
+          />
+        </ScrollableAnchor>
+
         <br/>
         <br/>
         <Button disabled={!carId} primary raised onClick={() => this.saveData()}>Auto beladen</Button>
@@ -121,6 +130,9 @@ class SelectCar extends Component {
         <br/>
         <br/>
         <br/>
+        <br/>
+        <br/><br/><br/><br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/><br/><br/><br/>
       </Container>
     )
   }

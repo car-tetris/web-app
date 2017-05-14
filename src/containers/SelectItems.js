@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux';
+import ScrollableAnchor, { goToTop, goToAnchor } from 'react-scrollable-anchor';
 import { ItemSearch, LoadedCar } from '../components/selectItems';
 import { Container, Button } from '../components/ui';
 import { FontIcon, List, ListItem, ListSubHeader, ListDivider, IconButton } from 'react-toolbox';
@@ -274,6 +275,13 @@ class SelectItems extends Component {
 
     if(load > 1) {
       console.error("Something didnt fit in");
+
+      if(!this.firstFullError) {
+        goToTop();
+        this.firstFullError = true;
+      }
+    }else{
+      this.firstFullError = false;
     }
     return load;
   }
@@ -300,9 +308,12 @@ class SelectItems extends Component {
 
       <div className={styles.appBar} style={{height: '190px'}}/>
 
-      <ItemSearch
-        onChange={(value) => this.setState({ searchFilter: value })}
-      />
+      <ScrollableAnchor id={'search'}>
+        <ItemSearch
+          onChange={(value) => this.setState({ searchFilter: value })}
+          onFocus={(e) => goToAnchor('search', false)}
+        />
+      </ScrollableAnchor>
 
       <List selectable ripple>
 
@@ -340,6 +351,10 @@ class SelectItems extends Component {
         )}
 
       </List>
+
+      <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+      <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+      <br/><br/><br/><br/><br/><br/>
 
     </Container>
     )
