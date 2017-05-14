@@ -3,17 +3,32 @@
   "name": "Packtris",
   "icons": [
     {
-      "src": "images/launcher-1x.png",
+      "src": "images/launcher-16.png",
+      "type": "image/png",
+      "sizes": "16x16"
+    },
+    {
+      "src": "images/launcher-32.png",
+      "type": "image/png",
+      "sizes": "32x32"
+    },
+    {
+      "src": "images/launcher-48.png",
       "type": "image/png",
       "sizes": "48x48"
     },
     {
-      "src": "images/launcher-2x.png",
+      "src": "images/launcher-64.png",
+      "type": "image/png",
+      "sizes": "64x64"
+    },
+    {
+      "src": "images/launcher-96.png",
       "type": "image/png",
       "sizes": "96x96"
     },
     {
-      "src": "images/launcher-4x.png",
+      "src": "images/launcher-192.png",
       "type": "image/png",
       "sizes": "192x192"
     }
